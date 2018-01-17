@@ -7,19 +7,19 @@ class ApiServer {
     origin: 'http://localhost:8080',
     optionsSuccessStatus: 200
   }
-  app = express();
+  appExpress = express();
+
 
   constructor() {
-    console.log('test server stated: ' + this.env);
+    this.mountRoutes();
+
+    console.log('test server created: ' + this.env);
   }
 
-  start() {
-    let app = express()
-    app.listen(8000, () => { console.log('server started') });
+  private mountRoutes() {
+    this.appExpress.use(cors(this.corsOptions));
 
-    app.use(cors(this.corsOptions))
-
-    app.route('/api/books/').get((req, resp) => {
+    this.appExpress.route('/api/books/').get((req, resp) => {
       resp.send({
         books: [{
           id: 'id_1',
@@ -30,14 +30,19 @@ class ApiServer {
       });
     });
 
-    app.route('/api/books/:isbn').get((req, resp) => {
+    this.appExpress.route('/api/books/:isbn').get((req, resp) => {
       let isbn = req.params['isbn'];
       resp.send({
         isbn: isbn
       });
     });
+
+  }
+
+  start(port:string) {
+    this.appExpress.listen(port, () => { console.log('server started') });
+    console.log('Started on port ' + port);
   }
 }
 
-let srv = new ApiServer();
-srv.start();
+export default ApiServer;
