@@ -4,7 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "node ./dist",
+    "debug": "nodemon --exec ./node_modules/.bin/ts-node -- ./src/index.ts"
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +18,8 @@
     "express": "^4.16.2"
   },
   "devDependencies": {
+    "nodemon": "^1.14.11",
+    "ts-node": "^4.1.0",
     "typescript": "^2.6.2"
   }
 }
