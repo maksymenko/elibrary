@@ -1,6 +1,6 @@
 import App from './apiserver';
 
-const port:string = process.env.PORT || '3000';
+const port: string = process.env.PORT || '3000';
 
-let app = new App();
-app.start(port);
+let app = new App('3000');
+app.start();

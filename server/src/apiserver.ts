@@ -1,25 +1,38 @@
 import * as express from "express";
+import * as http from "http";
 import * as cors from "cors";
+import * as bodyParser from "body-parser"; 
+
 
 class ApiServer {
-  env: string = process.env.NODE_ENV || 'dev';
-  corsOptions = {
-    origin: 'http://localhost:8080',
+  private env: string = process.env.NODE_ENV || 'dev';
+  private corsOptions = {
+    origin: 'http://localhost:8000',
     optionsSuccessStatus: 200
   }
-  appExpress = express();
+  private _appExpress: express.Application = express();
+  private _server: http.Server;
 
 
-  constructor() {
+  constructor(private _port: string) {
     this.mountRoutes();
 
-    console.log('test server created: ' + this.env);
+    console.log('test server created for env: ' + this.env);
+  }
+
+  public get port(): string {
+    return this._port;
+  }
+
+  public get appExpress(): any {
+    return this._appExpress;
   }
 
   private mountRoutes() {
-    this.appExpress.use(cors(this.corsOptions));
+    this._appExpress.use(cors(this.corsOptions));
+    this._appExpress.use(bodyParser.json());
 
-    this.appExpress.route('/api/books/').get((req, resp) => {
+    this._appExpress.route('/api/books/').get((req, resp) => {
       resp.send({
         books: [{
           id: 'id_1',
@@ -30,18 +43,34 @@ class ApiServer {
       });
     });
 
-    this.appExpress.route('/api/books/:isbn').get((req, resp) => {
+    this._appExpress.route('/api/books/:isbn').get((req, resp) => {
       let isbn = req.params['isbn'];
       resp.send({
         isbn: isbn
       });
     });
 
+    this._appExpress.route('/api/books').post((req, resp) => {
+        let newBook = req.body;
+        newBook.createdAt = new Date();
+        resp.status(201).send(newBook);
+    });
+
   }
 
-  start(port:string) {
-    this.appExpress.listen(port, () => { console.log('server started') });
-    console.log('Started on port ' + port);
+  public start() {
+    this._server = this._appExpress.listen(this._port, () => {
+      console.log('server started, port ' + this._port)
+    });
+
+    process.on( 'SIGTERM', () => {
+      console.log('server terminating... ');
+      this._server.close();
+   });
+  }
+
+  public stop() {
+    this._server.close();
   }
 }
 
