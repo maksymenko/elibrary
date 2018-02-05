@@ -1,27 +1,31 @@
-# WebClient
+## Angular TS base client
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.7.
+### Quick start
+```
+npm install
+ng serve --port=8000
+```
 
-## Development server
+### Get started
+* Install Angulat CLI, initiate project and heleper dev tool.
+```
+npm install -g @angular/cli
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* Init project 
+```
+ng new web-client // --skip-install to install all dependencies later
+```
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+//TODO: add pages and router
+ ... https://angular.io/guide/quickstart
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### References
+* https://malcoded.com/posts/angular-beginners-guide
+* https://malcoded.com/posts/angular-backend-express
+*  websocket, angular  https://medium.com/dailyjs/real-time-apps-with-typescript-integrating-web-sockets-node-angular-e2b57cbd1ec1
