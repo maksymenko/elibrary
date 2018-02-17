@@ -1,7 +1,13 @@
 <div>
+  <div class="title">{{title}}</div>
   <div>
     {{currentDate}}
   </div>
   <button (click)="refreshDate()">refresh date</button>
-</div>
 
+  <nav>
+    <a routerLink="/catalog">Catalog</a>
+  </nav>
+
+  <router-outlet></router-outlet>
+</div>
