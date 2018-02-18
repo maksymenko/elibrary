@@ -1,13 +1,21 @@
 <div>
-  <div class="title">{{title}}</div>
-  <div>
-    {{currentDate}}
-  </div>
-  <button (click)="refreshDate()">refresh date</button>
-
-  <nav>
-    <a routerLink="/catalog">Catalog</a>
+  <nav class="navigation-bar">
+    <div class="title">{{title}}</div>
+    <a class="navigation-item"
+       routerLink="/catalog">Catalog</a>
+    <a class="navigation-item"
+       routerLink="/mylist">MyList</a>
   </nav>
 
   <router-outlet></router-outlet>
+
+
+  <div class="footer">
+    <div>
+      {{currentDate}}
+    </div>
+    <button (click)="refreshDate()">refresh date</button>
+  </div>
+
+
 </div>

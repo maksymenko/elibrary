@@ -18,7 +18,7 @@ $ npm install -g @angular/cli
 $ ng new web-client --routing --skip-install
 ```
 
-* Create new elements
+* Adding new module, component
 ```
 $ ng g module catalog --routing
 $ ng g component catalog

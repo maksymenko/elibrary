@@ -51,9 +51,10 @@ $ npm install chai chai-http mocha ts-node @types/chai @types/chai-http @types/m
 
 
 #### References
+* https://expressjs.com
+* https://github.com/chaijs/chai-http
 * setup project https://basarat.gitbooks.io/typescript/docs/quick/nodejs.html
 * unit test in TypeScript https://journal.artfuldev.com/unit-testing-node-applications-with-typescript-using-mocha-and-chai-384ef05f32b2
 * nodejs tutorial https://blog.risingstack.com/node-hero-node-js-unit-testing-tutorial/
 * http test https://scotch.io/tutorials/test-a-node-restful-api-with-mocha-and-chai
-  * https://github.com/chaijs/chai-http
 * http://brianflove.com/2016/11/08/typescript-2-express-node/ 

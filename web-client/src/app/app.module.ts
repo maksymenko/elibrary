@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CatalogModule } from './catalog/catalog.module';
+import { MylistModule } from './mylist/mylist.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { CatalogModule } from './catalog/catalog.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CatalogModule
+    CatalogModule,
+    MylistModule
   ],
   providers: [],
   bootstrap: [AppComponent]
