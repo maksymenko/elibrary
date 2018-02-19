@@ -19,6 +19,7 @@
 *.sublime-workspace
 
 # IDE - VSCode
+../server/.history/
 .history/
 .vscode/
 !.vscode/settings.json
