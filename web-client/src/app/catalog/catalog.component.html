@@ -1,15 +1,10 @@
 <div>
-  <div class="catalog-book">
-    <div>Book 1</div>
-    <div>Author 1</div>
-    <div>Available</div>
+  <div class="catalog-book" *ngFor="let book of catalog.books">
+    <div>{{book.title}}</div>
+    <div>{{book.author}}</div>
+    <div *ngIf="book.available">Available</div>
+    <div *ngIf="!book.available">Not Available</div>
     <button>Add to my list</button>
-  </div>
-
-  <div class="catalog-book">
-    <div>Book 2</div>
-    <div>Author 2</div>
-    <div>Reserved till 27 Feb 2018</div>
-    <button>Add to my list</button>
+    <button>Hold</button>
   </div>
 </div>

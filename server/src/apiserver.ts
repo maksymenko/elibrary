@@ -1,13 +1,13 @@
 import * as express from "express";
 import * as http from "http";
 import * as cors from "cors";
-import * as bodyParser from "body-parser"; 
+import * as bodyParser from "body-parser";
 
 
 class ApiServer {
   private env: string = process.env.NODE_ENV || 'dev';
   private corsOptions = {
-    origin: 'http://localhost:8000',
+    origin: 'http://localhost:4200',
     optionsSuccessStatus: 200
   }
   private _appExpress: express.Application = express();
@@ -36,9 +36,17 @@ class ApiServer {
       resp.send({
         books: [{
           id: 'id_1',
-          isbn: 1234,
-          author: 'author name',
-          title: 'book title'
+          isbn: 1111,
+          author: 'Author 1',
+          title: 'Book Title 1',
+          available: true
+        },
+        {
+          id: 'id_2',
+          isbn: 2222,
+          author: 'Author 2',
+          title: 'Book Title 2',
+          available: false
         }]
       });
     });
@@ -51,9 +59,9 @@ class ApiServer {
     });
 
     this._appExpress.route('/api/books').post((req, resp) => {
-        let newBook = req.body;
-        newBook.createdAt = new Date();
-        resp.status(201).send(newBook);
+      let newBook = req.body;
+      newBook.createdAt = new Date();
+      resp.status(201).send(newBook);
     });
 
   }
@@ -63,10 +71,10 @@ class ApiServer {
       console.log('server started, port ' + this._port)
     });
 
-    process.on( 'SIGTERM', () => {
+    process.on('SIGTERM', () => {
       console.log('server terminating... ');
       this._server.close();
-   });
+    });
   }
 
   public stop() {

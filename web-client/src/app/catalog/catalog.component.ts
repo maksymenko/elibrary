@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CatalogService } from './catalog.service';
+import { Catalog } from './catalog';
 
 @Component({
   selector: 'app-catalog',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./catalog.component.css']
 })
 export class CatalogComponent implements OnInit {
-
-  constructor() { }
+  catalog: Catalog;
+  constructor(private catalogService: CatalogService) { }
 
   ngOnInit() {
+    this.catalogService.getCatalog().subscribe(books => {
+      this.catalog = books;
+    }
+    );
   }
-
 }
