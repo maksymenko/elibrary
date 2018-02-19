@@ -8,8 +8,4 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'e-Library';
   currentDate: Date = new Date();
-
-  public refreshDate() {
-    this.currentDate = new Date();
-  }
 }

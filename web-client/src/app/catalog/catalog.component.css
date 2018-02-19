@@ -6,3 +6,11 @@
   margin-top: 10px;
   padding-bottom: 5px;
 }
+
+.catalog-newbook {
+  margin: 10px;
+}
+
+.selected-book {
+  background-color: bisque;
+}

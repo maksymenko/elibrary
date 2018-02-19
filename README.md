@@ -1,4 +1,4 @@
-## TypeScript, Angular UI and Express REST API
+## TypeScript, Angular UI sample application and Express REST API
 
 > ## In progress
 

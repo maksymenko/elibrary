@@ -18,13 +18,17 @@ $ npm install -g @angular/cli
 $ ng new web-client --routing --skip-install
 ```
 
-* Adding new module, component
+* Adding new module, component, service
 ```
 $ ng g module catalog --routing
 $ ng g component catalog
+$ ng g service catalog/catalog
 ```
 
-
+* Add forms support to module, to bind input field with model
+```
+import { FormsModule } from '@angular/forms'
+```
 
 
 
@@ -36,6 +40,7 @@ $ ng g component catalog
 ### References
 * https://angular.io/guide/quickstart
 * https://angular.io/tutorial
+** totorial sample https://stackblitz.com/angular/xlpymmababa
 * https://malcoded.com/posts/angular-beginners-guide
 * https://malcoded.com/posts/angular-backend-express
 *  websocket, angular  https://medium.com/dailyjs/real-time-apps-with-typescript-integrating-web-sockets-node-angular-e2b57cbd1ec1
