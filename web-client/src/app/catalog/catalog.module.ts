@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { CatalogRoutingModule } from './catalog-routing.module';
 import { CatalogComponent } from './catalog.component';
 import { CatalogService } from './catalog.service';
+import { DetailsComponent } from './details/details.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,7 @@ import { CatalogService } from './catalog.service';
     HttpClientModule,
     CatalogRoutingModule
   ],
-  declarations: [CatalogComponent],
+  declarations: [CatalogComponent, DetailsComponent],
   providers: [
     CatalogService
   ]

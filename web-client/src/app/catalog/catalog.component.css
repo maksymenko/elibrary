@@ -1,3 +1,19 @@
+.catalog-books-container {
+  display: flex;
+  flex-flow: row;
+  width: 90%
+}
+
+.catalog-books-list {
+  flex-basis: 50%;
+  margin-right: 10px;
+}
+
+.catalog-book-details {
+  margin-left: 10px;
+  flex-basis: 50%;
+}
+
 .catalog-book {
   background-color: floralwhite;
   border-bottom-width: 1px;

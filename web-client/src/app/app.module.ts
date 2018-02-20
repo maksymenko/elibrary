@@ -9,8 +9,7 @@ import { MylistModule } from './mylist/mylist.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    
+    AppComponent
   ],
   imports: [
     BrowserModule,

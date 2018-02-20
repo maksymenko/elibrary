@@ -21,9 +21,12 @@ $ ng new web-client --routing --skip-install
 * Adding new module, component, service
 ```
 $ ng g module catalog --routing
-$ ng g component catalog
+$ ng g component catalog --module=mylist
 $ ng g service catalog/catalog
 ```
+> Components cointains app prefix in name. By default `app` e.g. componet `details` looks like thin in htmlk page
+> `app-details`
+
 
 * Add forms support to module, to bind input field with model
 ```
@@ -31,11 +34,14 @@ import { FormsModule } from '@angular/forms'
 ```
 
 
+#### Notes
+* 3 types of Directives : Components, Structural Directives, Attribute Directives
+* Decorators is used to define metadata for components and fields (@Component, @Input, ets)
 
 
-
+---
 //TODO: add pages and router
- ... https://angular.io/tutorial
+ ... https://angular.io/tutorial    `6 services`
 
 ### References
 * https://angular.io/guide/quickstart
