@@ -54,7 +54,11 @@ class ApiServer {
     this._appExpress.route('/api/books/:isbn').get((req, resp) => {
       let isbn = req.params['isbn'];
       resp.send({
-        isbn: isbn
+        id: 'id_' + isbn,
+        isbn: isbn,
+        author: 'Author ' + isbn,
+        title: 'Book Title ' + isbn,
+        available: true
       });
     });
 

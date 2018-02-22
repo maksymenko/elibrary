@@ -20,7 +20,7 @@
   <div class="catalog-books-container">
     <div class="catalog-books-list">
       <div [class.selected-book]="book === selectedBook"
-           (click)="onSelect(book)"
+           routerLink="/catalog/{{book.isbn}}"
            class="catalog-book"
            *ngFor="let book of catalog.books">
         <div>{{book.title}}</div>
