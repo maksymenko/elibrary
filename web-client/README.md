@@ -86,8 +86,8 @@ this.route.snapshot.paramMap.get('id')
 
 
 ---
-//TODO: add pages and router
- ... https://angular.io/tutorial    `8 http`
+//TODO: add tests
+// https://angular.io/tutorial ... fundamentals
 
 ### References
 * https://angular.io/guide/quickstart
