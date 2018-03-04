@@ -7,6 +7,7 @@ import { CatalogRoutingModule } from './catalog-routing.module';
 import { CatalogComponent } from './catalog.component';
 import { CatalogService } from './catalog.service';
 import { DetailsComponent } from './details/details.component';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   imports: [
@@ -15,7 +16,7 @@ import { DetailsComponent } from './details/details.component';
     HttpClientModule,
     CatalogRoutingModule
   ],
-  declarations: [CatalogComponent, DetailsComponent],
+  declarations: [CatalogComponent, DetailsComponent, FilterPipe],
   providers: [
     CatalogService
   ]

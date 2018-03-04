@@ -46,7 +46,7 @@ export class CatalogComponent implements OnInit {
     this.filteredBooks = this.catalog.books;
     if (filter.length > 0) {
       this.filteredBooks = this.filteredBooks.filter(b => {
-        return b.id.indexOf(filter) > 0;
+        return b.id.includes(filter);
       });
     }
   }

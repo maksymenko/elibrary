@@ -18,11 +18,12 @@ $ npm install -g @angular/cli
 $ ng new web-client --routing --skip-install
 ```
 
-* Adding new module, component, service
+* Adding new module, component, service, pipe
 ```
 $ ng g module catalog --routing
 $ ng g component catalog --module=mylist
 $ ng g service catalog/catalog --module=catalog
+$ ng g pipe filter
 ```
 > Components cointains app prefix in name. By default `app` e.g. componet `details` looks like thin in htmlk page
 > `app-details`

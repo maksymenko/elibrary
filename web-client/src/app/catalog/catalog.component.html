@@ -10,8 +10,10 @@
     </label>
     <button (click)="addBook(newBook)">Add new book</button>
     <label>Filter
-      <input #catalogFilter (keyup)="search(catalogFilter.value)"/>
+      <input #catalogFilter
+             (keyup)="search(catalogFilter.value)" />
     </label>
+    <input [(ngModel)]=searchText placeholder="Filter" />
   </div>
 
   <div class="catalog-book">
@@ -20,6 +22,9 @@
   </div>
 
   <div class="catalog-books-container">
+    <div>
+      Show catalog as book array
+    </div>
     <div class="catalog-books-list">
       <div [class.selected-book]="book === selectedBook"
            routerLink="/catalog/{{book.isbn}}"
@@ -36,11 +41,14 @@
 
 
     <div class="catalog-books-container">
+      <div>
+        Show catalog as observable object
+      </div>
       <div class="catalog-books-list">
         <div [class.selected-book]="book === selectedBook"
              routerLink="/catalog/{{book.isbn}}"
              class="catalog-book"
-             *ngFor="let book of books$ | async">
+             *ngFor="let book of books$ | async | filter : searchText">
           <div>{{book.title}}</div>
           <div>{{book.author}}</div>
           <div *ngIf="book.available">Available</div>
@@ -50,8 +58,8 @@
         </div>
       </div>
 
-    <div class="catalog-book-details">
-      <app-details [book]="selectedBook"></app-details>
+      <div class="catalog-book-details">
+        <app-details [book]="selectedBook"></app-details>
+      </div>
     </div>
   </div>
-</div>
