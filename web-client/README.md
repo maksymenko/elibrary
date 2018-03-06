@@ -88,12 +88,12 @@ this.route.snapshot.paramMap.get('id')
 
 ---
 //TODO: add tests
-// https://angular.io/tutorial ... fundamentals
+// https://angular.io/guide/testing#testing-services-with-the-testbed `Testing services with the TestBed`
 
 ### References
 * https://angular.io/guide/quickstart
 * https://angular.io/tutorial
-** totorial sample https://stackblitz.com/angular/xlpymmababa
+** tutorial sample https://stackblitz.com/angular/xlpymmababa
 * https://malcoded.com/posts/angular-beginners-guide
 * https://malcoded.com/posts/angular-backend-express
 *  websocket, angular  https://medium.com/dailyjs/real-time-apps-with-typescript-integrating-web-sockets-node-angular-e2b57cbd1ec1

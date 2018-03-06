@@ -1,11 +1,14 @@
 import { TestBed, inject } from '@angular/core/testing';
-
 import { CatalogService } from './catalog.service';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+
 
 describe('CatalogService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [CatalogService]
+      providers: [HttpClientModule, CatalogService],
+      imports: [HttpModule, HttpClientModule]
     });
   });
 
