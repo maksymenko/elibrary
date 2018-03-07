@@ -1,20 +1,17 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
-import { RouterTestingModule } from '@angular/router/testing'
-import { Observable } from 'rxjs/Rx';
 import { ActivatedRoute } from '@angular/router';
-import { FilterPipe } from './filter.pipe';
-import { DetailsComponent } from './details/details.component';
 import { CatalogComponent } from './catalog.component';
 import { CatalogService } from './catalog.service';
 import { Catalog } from './models/catalog';
 import { Book } from './models/book';
-
-import { HttpClient } from '@angular/common/http';
-
-import { HttpModule } from '@angular/http';
+import { DetailsComponent } from './details/details.component';
+import { FilterPipe } from './filter.pipe';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { HttpModule } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
+import { RouterTestingModule } from '@angular/router/testing'
+import { asyncData } from '../testing/async-observable-helpers'
 
 class MockCatalogService {
   getCatalog() { }
@@ -25,26 +22,29 @@ describe('CatalogComponent', () => {
   let component: CatalogComponent;
   let fixture: ComponentFixture<CatalogComponent>;
   class MockActivatedRoute {
-    params = Observable.of([]);;
+    //params = Observable.of([]);
+    params = asyncData([]);
   }
 
   beforeEach(async(() => {
-    const spy = jasmine.createSpyObj('CatalogService', ['getCatalog', 'getBook']);
-
-    let catalogServiceSpy = jasmine.createSpyObj('catalogServiceSpy', ['getCatalog', 'getBook']);
-    let book: Book = new Book();
+    const book: Book = new Book();
     book.id = 'id1';
     book.isbn = 'isbn';
-    book.author = 'author'; 
+    book.author = 'author';
     book.title = 'title';
 
-    let catalog: Catalog = { books: [book] };
+    const catalog: Catalog = { books: [book] };
+
+    const catalogServiceSpy = jasmine.createSpyObj(
+      'catalogServiceSpy',
+      ['getCatalog', 'getBook']);
+
     catalogServiceSpy.getBook.and.returnValue(
-      Observable.of(book)
+      asyncData(book)
     );
 
     catalogServiceSpy.getCatalog.and.returnValue(
-      Observable.of(catalog)
+      asyncData(catalog)
     );
 
 
