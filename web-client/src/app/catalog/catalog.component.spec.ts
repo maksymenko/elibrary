@@ -11,48 +11,41 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { RouterTestingModule } from '@angular/router/testing'
-import { asyncData } from '../testing/async-observable-helpers'
 
-class MockCatalogService {
-  getCatalog() { }
-  getBook(isbn: string) { }
-}
 
 describe('CatalogComponent', () => {
   let component: CatalogComponent;
   let fixture: ComponentFixture<CatalogComponent>;
-  class MockActivatedRoute {
-    //params = Observable.of([]);
-    params = asyncData([]);
-  }
+
+  const book: Book = new Book();
+  book.id = 'id1';
+  book.isbn = 'isbn';
+  book.author = 'author';
+  book.title = 'title';
+
+  const catalog: Catalog = { books: [book] };
 
   beforeEach(async(() => {
-    const book: Book = new Book();
-    book.id = 'id1';
-    book.isbn = 'isbn';
-    book.author = 'author';
-    book.title = 'title';
-
-    const catalog: Catalog = { books: [book] };
+    let activatedRoute: ActivatedRoute = new ActivatedRoute();
+    activatedRoute.params = Observable.of({ isbn: 'isbn' });
 
     const catalogServiceSpy = jasmine.createSpyObj(
       'catalogServiceSpy',
       ['getCatalog', 'getBook']);
 
     catalogServiceSpy.getBook.and.returnValue(
-      asyncData(book)
+      Observable.of(book)
     );
 
     catalogServiceSpy.getCatalog.and.returnValue(
-      asyncData(catalog)
+      Observable.of(catalog)
     );
-
 
     TestBed.configureTestingModule({
       providers: [
         HttpClientModule,
         { provide: CatalogService, useValue: catalogServiceSpy },
-        { provide: ActivatedRoute, useClass: MockActivatedRoute }],
+        { provide: ActivatedRoute, useValue: activatedRoute }],
       declarations: [CatalogComponent, DetailsComponent, FilterPipe],
       imports: [HttpModule, HttpClientModule, FormsModule, RouterTestingModule]
     })
@@ -67,5 +60,7 @@ describe('CatalogComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    expect(component.selectedBook).toEqual(book);
+    expect(component.filteredBooks).toEqual([book]);
   });
 });

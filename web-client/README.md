@@ -3,6 +3,7 @@
 ### Quick start
 ```
 $ npm install
+$ ng test
 $ ng serve --port=8000 // Start app in debug mode
 $ ng build --prod  // Creates bundle ready to deploy
 ```
